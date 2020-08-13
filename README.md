@@ -2,7 +2,7 @@
 ---
 **CRÉDITOS: >-
   ESTA GUÍA FUE HECHA POR ALESSANDRO KONRAD [(PI POOL [BERRY])](https://pipool.online/).
-  LA GUÍA ORIGINAL EN INGLÉS LA PUEDES ENCONTRAR** [**AQUÍ**](https://github.com/tloada/Pi-Pool).
+  LA GUÍA ORIGINAL EN INGLÉS LA PUEDES ENCONTRAR** [**AQUÍ**](https://github.com/alessandrokonrad/Pi-Pool).
 ---
 ---
 TRADUCIDA POR: >-
@@ -10,13 +10,6 @@ TRADUCIDA POR: >-
   SI DESEAS APOYARNOS, PUEDES HACERLO DELEGANDO A NUESTRO POOL CON TICKER [[TLOA]](https://tloada.github.io/tloa/español.html).
 ---
 
-
-<!-- <p align="center"><img width="80px" src="https://github.com/alessandrokonrad/Pi-Pool/blob/master/images/logo.svg"></img></p>
-
-# [BERRY] Pi Pool
-
-Pi Pool is a Cardano Stakepool on Raspberry Pi. Check out my <a href="https://pipool.online">website</a> to see more about my stakepool. You can support me by just delegating to my pool. I'm definitely around at mainnet release of Shelley with a stakepool!<br>
-This repository is a guide to setup a stakepool on a Raspberry Pi by your own. -->
 
 ## El porqué de esta guía
 Básicamente tenemos dos tipos diferentes de arquitectura de CPU conocidos. Primero, solamente consideremos las máquinas de 64-bits. Muchos conocemos Intel y AMD. Ambos construyen sus CPUs principalmente en una arquitectura x86_64. Por otro lado tenemos ARM, donde los CPUs están construidos en la arquitectura aarch64, y un Raspberry Pi tiene un CPU aarch64. Sin entrar en mucho detalle, el problema es que las guías para instalar Cardano-Node están hechas para máquinas x86_64 y actualmente no soportan aarch64 de manera predeterminada. El objetivo de esta guía es facilitar la instalación de Cardano-Node en un Raspberry Pi 4.
