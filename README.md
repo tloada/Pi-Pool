@@ -19,7 +19,7 @@ Pi Pool is a Cardano Stakepool on Raspberry Pi. Check out my <a href="https://pi
 This repository is a guide to setup a stakepool on a Raspberry Pi by your own. -->
 
 ## El porqué de esta guía
-Básicamente tenemos dos tipos diferentes de arquitectura de CPU conocidos. Primero consideremos solamnente máquinas de 64-bits. Muchos conocemos Intel y AMD. Ambos construyen sus CPUs en una arquitectura x86_64 principalmente. Por otro lado tenemos ARM, donde los CPUs están construidos en la arquitectura aarch64, y un Raspberry Pi tiene un CPU aarch64. Sin entrar en mucho detalle, el problema es que las guías para instalar Cardano-Node están hechas para máquinas x86_64 y actualmente no soportan aarch64 de manera predeterminada. El objetivo de esta guía es facilitar la instalación de Cardano-Node en un Raspberry Pi 4.
+Básicamente tenemos dos tipos diferentes de arquitectura de CPU conocidos. Primero, solamente consideremos las máquinas de 64-bits. Muchos conocemos Intel y AMD. Ambos construyen sus CPUs principalmente en una arquitectura x86_64. Por otro lado tenemos ARM, donde los CPUs están construidos en la arquitectura aarch64, y un Raspberry Pi tiene un CPU aarch64. Sin entrar en mucho detalle, el problema es que las guías para instalar Cardano-Node están hechas para máquinas x86_64 y actualmente no soportan aarch64 de manera predeterminada. El objetivo de esta guía es facilitar la instalación de Cardano-Node en un Raspberry Pi 4.
 
 ## Prerrequisitos
 
