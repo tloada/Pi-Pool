@@ -108,7 +108,7 @@ cardano-node run \
 
 Eso es todo. ¡Tu nodo ahora comenzará a sincronizarse!
 
-<b>Nota:</b> El proceso de sincronización a la blockchain de la mainnet tardará un largo tiempo. Pueda que tu nodo se quiebre algunas veces durante el proceso de sincronización. Puedes tener un respaldo en una máquina x86_64 donde puedas sincronizar tu nodo y de ahí solamente copiar la carpeta db en tu Raspberry Pi, lo cual lo hace mucho más fácil y rápido. En cuanto el Pi esté completamente sincronizado no tendrá problema alguno y ejecutará tu nodo de manera correcta, usando aproximadamente el 5% del CPU. 
+<b>Nota:</b> El proceso de sincronización a la blockchain de la mainnet tardará un largo tiempo. Pueda que tu nodo se quiebre algunas veces durante el proceso de sincronización. Puedes tener un respaldo en una máquina x86_64 donde puedas sincronizar tu nodo y de ahí solamente copiar la carpeta db en tu Raspberry Pi, lo cual lo hace mucho más fácil y rápido. En cuanto el Pi esté completamente sincronizado no tendrá problema alguno y ejecutará tu nodo de manera correcta, usando aproximadamente el 5% del CPU.
 
 
 ## Inicia tu stake pool
