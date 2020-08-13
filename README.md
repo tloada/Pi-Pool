@@ -24,11 +24,11 @@ Básicamente tenemos dos tipos diferentes de arquitectura de CPU conocidos. Prim
 ## Prerrequisitos
 
 * Raspberry Pi 4 con 8GB RAM (la versión de 4GB solamente con la partición Swap como extra RAM) 
-* Ubuntu 20.04 LTS <b>64-bit</b> (Fácil de instalar con <a href="https://www.raspberrypi.org/downloads/">Pi Imager (sitio en inglés)</a>. Para ejecutar Ubuntu en una SSD, revisa la sección más adelante)
+* Ubuntu 20.04 LTS <b>64-bit</b> (Fácil de instalar con <a href="https://www.raspberrypi.org/downloads/">Pi Imager</a> (sitio en inglés). Para ejecutar Ubuntu en una SSD, revisa la sección más adelante)
 
 ## Comencemos
 
-Esta guía está actualizada para la Mainnet de Cardano. Luego de seguir con esta guía, puedes usar CNTools si lo deseas.
+Esta guía está actualizada para la Mainnet de Cardano. Luego de seguir esta guía, puedes usar CNTools si lo deseas.
 
 
 #### 1. Primerament actualicemos Ubuntu:
@@ -47,8 +47,8 @@ sudo apt-get install libsodium-dev build-essential pkg-config libffi-dev libgmp-
 ```
 sudo apt-get install -y haskell-platform
 ```
-Ahra deberías tener GHC 8.6.5 y Cabal 2.4. Puedes revisar con <code>ghc --version</code> y <code>cabal --version</code>.
-GHC 8.6.5 es la versión que necesitamos, pero necesitamos una versión de Cabal más reciente, Cabal (3.2).<br>
+Ahora deberías tener GHC 8.6.5 y Cabal 2.4. Puedes revisar con <code>ghc --version</code> y <code>cabal --version</code>.
+GHC 8.6.5 es la versión que necesitamos, pero necesitamos una versión de Cabal más reciente, Cabal 3.2.<br>
 
 #### 4. Obtén Cabal 3.2 y remueve Cabal 2.4:
 ```
