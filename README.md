@@ -24,11 +24,11 @@ Básicamente tenemos dos tipos diferentes de arquitectura de CPU conocidos. Prim
 ## Prerrequisitos
 
 * Raspberry Pi 4 con 8GB RAM (la versión de 4GB solamente con la partición Swap como extra RAM) 
-* Ubuntu 20.04 LTS <b>64-bit</b> (Fácil de instalar con <a href="https://www.raspberrypi.org/downloads/">Pi Imager (sition en inglés)</a>. Para ejecutar Ubuntu en una SSD, revisa la sección más adelante)
+* Ubuntu 20.04 LTS <b>64-bit</b> (Fácil de instalar con <a href="https://www.raspberrypi.org/downloads/">Pi Imager (sitio en inglés)</a>. Para ejecutar Ubuntu en una SSD, revisa la sección más adelante)
 
 ## Comencemos
 
-Esta guía está actualizada para la Mainnet de Cardano. Luego de seguir ocn esta guía, puedes usar CNTools si lo deseas.
+Esta guía está actualizada para la Mainnet de Cardano. Luego de seguir con esta guía, puedes usar CNTools si lo deseas.
 
 
 #### 1. Primerament actualicemos Ubuntu:
@@ -86,12 +86,12 @@ cp -p dist-newstyle/build/aarch64-linux/ghc-8.6.5/cardano-node-1.18.1/x/cardano-
 cp -p dist-newstyle/build/aarch64-linux/ghc-8.6.5/cardano-cli-1.18.1/x/cardano-cli/build/cardano-cli/cardano-cli ~/.cabal/bin/
 
 ```
-El tag que usamos aquí es 1.18.1. Revisa el tag más reciente y utiliza ese.<br>
-Finalmente tenemos nuestro nodo. Si todo funcionó debidamente, deberías de podes teclear <code>cardano-cli</code> y <code>cardano-node</code>.
+**El tag que usamos aquí es 1.18.1. Revisa el tag más reciente y utiliza ese.**<br>
+Finalmente tenemos nuestro nodo. Si todo funcionó debidamente, deberías de poder teclear <code>cardano-cli</code> y <code>cardano-node</code>.
 
 #### 7. Ejecutando un nodo:
 
-We need first of all some configuration files:
+Primeramente, necesitamos los archivos de configuración (**asegúrate que éstos sean los más recientes**):
 ```
 mkdir pi-node
 cd pi-node
@@ -101,8 +101,8 @@ wget https://hydra.iohk.io/build/3644329/download/1/mainnet-shelley-genesis.json
 wget https://hydra.iohk.io/build/3644329/download/1/mainnet-topology.json
 
 ```
-You can change "ViewMode" from "SimpleView to "LiveView" in mainnet-config.json to get a fancy node monitor.<br>
-Now start the node:
+Puedes cambiar el "ViewMode" de "SimpleView a "LiveView" en el archivo mainnet-config.json para obtener un monitor sofisticado para tu nodo.<br>
+Ahora inicia el nodo:
 ```
 cardano-node run \
    --topology mainnet-topology.json \
@@ -113,36 +113,34 @@ cardano-node run \
    --config mainnet-config.json
 ```
 
-That's it. Your node is now starting to sync!
+Eso es todo. ¡Tu nodo ahora comenzará a sincronizarse!
 
-<b>Note:</b> The syncing process for the mainnet blockchain can take really long. My node also crashed sometimes during the syncing process. Having a backup machine (x86_64) where you sync the node and just copy the db on the Raspberry Pi, makes it much easier and faster. As soon as the Pi is in sync it runs really smooth and just uses about 5% of the CPU. 
+<b>Nota:</b> El proceso de sincronización a la blockchain de la mainnet tardará un largo tiempo. Pueda que tu nodo se quiebre algunas veces durante el proceso de sincronización. Puedes tener un respaldo en una máquina x86_64 donde puedas sincronizar tu nodo y de ahí solamente copiar la carpeta db en tu Raspberry Pi, lo cual lo hace mucho más fácil y rápido. En cuanto el Pi esté completamente sincronizado no tendrá problema alguno y ejecutará tu nodo de manera correcta, usando aproximadamente el 5% del CPU. 
 
 
-## Setup a stakepool
-I might create a detailed guide soon, on how to register a stakepool. Anyway there are plenty tutorials out there: <br />
-I can recommend <a href="https://cardano-community.github.io/guild-operators/Scripts/cntools.html">CNTools</a> (make sure the CNTools version is compatible with the Cardano-Node version).<br />
-Otherwise I would follow the official guide of <a href="https://cardano-foundation-cardano.readthedocs-hosted.com/en/latest/getting-started/stake-pool-operators/index.html">cardano.org</a>
+## Inicia tu stake pool
+Puedes chequear <a href="https://github.com/tloada/coincashew/tree/master/coins/overview-ada/guide-how-to-build-a-haskell-stakepool-node">esta guía</a>. Recuerda que esta guía mencionada es para máquinas x86_64, por lo cual es recomendable que la leas y comprendas antes de utilizarla para iniciar tu pool. Esto te ayudará a comprender la ubicación de las carpetas y archivos utilizados en la guía.<br />
+De lo contrario te recomiendo la guía oficial (en inglés) de <a href="https://cardano-foundation-cardano.readthedocs-hosted.com/en/latest/getting-started/stake-pool-operators/index.html">cardano.org</a>
 
-## Run Ubuntu on a SSD
-#### Running Ubuntu from SSD, while booting from SD card:
+## Ejecuta Ubuntu en una SSD
+#### Ejecutando Ubuntu en una SSD, e iniciando tu Pi con una microSD:
 
-1. Flash the Ubuntu image on your SSD and your SD card.
-2. Now go to to the boot partition of the SD card and change in cmdline.txt the root path to: <code>root=/dev/sda2</code>
-3. Insert the SD card into the Pi and the SSD into one of the USB 3.0 ports.
-This should boot now from the SD card, but the OS will run on the SSD then.
+1. Instala la imagen de Ubuntu image <a href="https://www.raspberrypi.org/downloads/">(Pi Imager sitio en inglés)</a> en tu SSD y en tu microSD.
+2. Dirígete a tu partición de inicio de la micrSD y en **cmdline.txt** cambia el **root path a: <code>root=/dev/sda2</code>**
+3. Introduce la microSD en el Pi y la SSD en uno de los puertos USB 3.0.
+Esto debería iniciar tu Raspberry Pi desde la microSD, pero el OS (Sistema Operativo) será ejecutando en la SSD.
 
-#### Running and booting from SSD (no need for SD card):
+#### Ejecutando e iniciando en una SSD (no necesitas microSD):
 
-I recently saw a post, where you could boot Ubuntu also from the SSD, so there is no need for the SD card anymore. I haven't tried that yet, but it might work. You can check that out:
-<a href="https://www.raspberrypi.org/forums/viewtopic.php?t=278791">Directly boot from SSD</a>
+Aquí puedes encontrar cómo hacerlo. El sitio está en inglés. No he intentado de esta forma, pero este es el enlace para <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=278791">iniciar tu Pi directamente en la SSD</a>
 
-#### Problems with running Ubuntu from USB 3.0:
-<a href="https://jamesachambers.com/raspberry-pi-4-usb-boot-config-guide-for-ssd-flash-drives/">Adding quirks to your chipset, if it's not working</a>
+#### Problemas al ejecutar Ubuntu desde USB 3.0 (sitio en inglés):
+<a href="https://jamesachambers.com/raspberry-pi-4-usb-boot-config-guide-for-ssd-flash-drives/">Añadiendo quirks a tu chipset, si no está funcionando</a>
 
 ## Cross-building
-If you want to build your own Cabal binary for aarch64 or a different version of Cabal, follow <a href="/Crossbuilding.md">this</a> guide.
+Si quieres construir tu propio binario de Cabal para aarch64 o una versión diferente de Cabal, sigue <a href="/Crossbuilding.md">esta guía</a>.
 
 
 ## Port forwarding
-Go to your router settings. You can access them via your browser with the IP address of the router (e.g. 192.168.178.1 or if you have a FritzBox with fritz.box).
-Then look for a option Port Forwarding. Choose the IP address of your relay node(s) and open its/their port(s). Allow TCP and UDP. Then save it and that's it.
+Ve a las configuraciones de tu router. Puedes accesarlas desde tu explorador con la dirección IP de tu router (e.g. 192.168.178.1).
+Luego busca la opción de **Port Forwarding**. Elige la dirección IP de tu(s) nodo(s) de relevo y habilita su(s) puerto(s). Permite TCP y UDP. Guarda los cambios y listo.
