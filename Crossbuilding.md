@@ -1,11 +1,11 @@
 ## Cross-building
-Make sure you have the Haskell platform installed (<code>sudo apt install haskell-platform</code>). You also <b>need</b> to do this on a aarch64/arm64 machine or simply on your Raspberry Pi.<br>
-We will build Cabal 3.0 in this tutorial, but you can choose any version you need.
+Asegúrate que tengas instalada la Plataforma Haskell (<code>sudo apt install haskell-platform</code>). También <b>necesitarás</b> hacer esto un una máquina aarch64/ARM64 o simplemente en tu Raspberry Pi 4.<br>
+Construiremos Cabal 3.0 en esta guía, pero puedes elegir cualquier versión que necesites.
 ```
 wget http://hackage.haskell.org/package/cabal-install-3.0.0.0/cabal-install-3.0.0.0.tar.gz
 tar -xf cabal-install-3.0.0.0.tar.gz
 cd cabal-install-3.0.0.0
 cabal update
-cabal install --installdir=$HOME/.local/bin
+cabal install --installdir=$HOME/.cabal/bin
 ```
-This could take some time. Now check with <code>cabal --version</code> your version.
+Esto puede tomar algo de tiempo. Ahora revisa tu versión con <code>cabal --version</code>.

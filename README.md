@@ -18,77 +18,78 @@ TRADUCIDA POR: >-
 Pi Pool is a Cardano Stakepool on Raspberry Pi. Check out my <a href="https://pipool.online">website</a> to see more about my stakepool. You can support me by just delegating to my pool. I'm definitely around at mainnet release of Shelley with a stakepool!<br>
 This repository is a guide to setup a stakepool on a Raspberry Pi by your own. -->
 
-## Why this guide
-Basically we have two different popular CPU architectures. Let's only consider 64-bit machines. Many of you know Intel and AMD. They primarily build their CPUs on a x86_64 architecture. Then there is ARM, which CPUs are built on the so called aarch64 architecture, and our Raspberry Pi has an aarch64 CPU. I don't want to dive any deeper in that, but the problem is, that the Cardano-Node setup is made for x86_64 machines and currently doesn't support aarch64 out of the box. The goal of this repository is to make it as easy as possible to run a Cardano-Node on Raspberry Pi.
+## El porqué de esta guía
+Básicamente tenemos dos tipos diferentes de arquitectura de CPU conocidos. Primero consideremos solamnente máquinas de 64-bits. Muchos conocemos Intel y AMD. Ambos construyen sus CPUs en una arquitectura x86_64 principalmente. Por otro lado tenemos ARM, donde los CPUs están construidos en la arquitectura aarch64, y un Raspberry Pi tiene un CPU aarch64. Sin entrar en mucho detalle, el problema es que las guías para instalar Cardano-Node están hechas para máquinas x86_64 y actualmente no soportan aarch64 de manera predeterminada. El objetivo de esta guía es facilitar la instalación de Cardano-Node en un Raspberry Pi 4.
 
-## Prerequesites
+## Prerrquisitos
 
-* Raspberry Pi 4 with 8GB RAM (4GB version works only with Swap partition as extra RAM) 
-* Ubuntu 20.04 LTS <b>64-bit</b> (Very easy to install with <a href="https://www.raspberrypi.org/downloads/">Pi Imager</a>. For running Ubuntu on SSD, check below)
+* Raspberry Pi 4 con 8GB RAM (la versión de 4GB solamente con la partición Swap como extra RAM) 
+* Ubuntu 20.04 LTS <b>64-bit</b> (Fácil de instalar con <a href="https://www.raspberrypi.org/downloads/">Pi Imager (sition en inglés)</a>. Para ejecutar Ubuntu en una SSD, revisa la sección más adelante)
 
-## Getting started
+## Comencemos
 
-This guide is for the Cardano mainnet!
+Esta guía está actualizada para la Mainnet de Cardano. Luego de seguir ocn esta guía, puedes usar CNTools si lo deseas.
 
 
-#### 1. First of all let's update and upgrade our Ubuntu:
+#### 1. Primerament actualicemos Ubuntu:
 ```
 sudo apt-get update
 sudo apt-get upgrade
 ```
-You might reboot your Pi afterwards.
+Posteriormente, tal vez reinicies tu Pi.
 
-#### 2. Install necessary dependencies:
+#### 2. Instala las dependencias necesarias:
 ```
 sudo apt-get install libsodium-dev build-essential pkg-config libffi-dev libgmp-dev libssl-dev libtinfo-dev libsystemd-dev zlib1g-dev make g++ tmux git jq wget libncursesw5 llvm -y
 
 ``` 
-#### 3. Get the Haskell platform:
+#### 3. Obtén la Plataforma Haskell:
 ```
 sudo apt-get install -y haskell-platform
 ```
-Now you should have GHC 8.6.5 and Cabal 2.4. You can check that with <code>ghc --version</code> and <code>cabal --version</code>.
-GHC 8.6.5 is perfectly fine, but we need a higher Cabal version (3.2).<br>
+Ahra deberías tener GHC 8.6.5 y Cabal 2.4. Puedes revisar con <code>ghc --version</code> y <code>cabal --version</code>.
+GHC 8.6.5 es la versión que necesitamos, pero necesitamos una versión de Cabal más reciente, Cabal (3.2).<br>
 
-#### 4. Get Cabal 3.2 and remove Cabal 2.4:
+#### 4. Obtén Cabal 3.2 y remueve Cabal 2.4:
 ```
 wget https://github.com/alessandrokonrad/Pi-Pool/raw/master/aarch64/cabal3.2/cabal
 chmod +x cabal
-mkdir -p ~/.local/bin
-mv cabal ~/.local/bin
+mkdir -p ~/.cabal/bin
+mv cabal ~/.cabal/bin
 sudo rm /usr/bin/cabal
 ```
-You can also build your own Cabal binary for aarch64. Look <a href="/Crossbuilding.md">here</a>.
+También puedes crear tu propio binario para Cabal aarch64. Revisa <a href="/Crossbuilding.md">aquí</a>.
 
-#### 5. Add the new Cabal to PATH:
+#### 5. Agrega el nuevo Cabal al PATH:
 
-Open the .bashrc file in your home directory and add at the bottom:
+Abre el archivo .bashrc en tu directorio de inicio y al final agrega lo siguiente:
 ```
-export PATH="~/.local/bin:$PATH"
+export PATH="~/.cabal/bin:$PATH"
 ```
-To make the the new PATH active you can either reboot the Pi or type <code>source .bashrc</code> from your home directory. Then run:
+Para activar el nuevo PATH ouedes reiniciar el Pi o teclear <code>source .bashrc</code> desde tu directorio de inicio. Luego ejecuta:
 ```
 cabal update
 ```
 <br>
 
-Now we are ready to build the Cardano-Node!
+¡Ahora estamos listos para construir el Cardano-Node!
 
-#### 6. Clone the cardano-node repository from GitHub and build it (this takes a while):
+#### 6. Clona el repertorio Github de cardano-node y constrúyelo (esto toma algo de tiempo):
 ```
 git clone https://github.com/input-output-hk/cardano-node.git
 cd cardano-node
 echo -e "package cardano-crypto-praos\n  flags: -external-libsodium-vrf" > cabal.project.local
 git fetch --all --tags
-git checkout tags/1.18.0
+git checkout tags/1.18.1
 cabal build all
-cp -p dist-newstyle/build/aarch64-linux/ghc-8.6.5/cardano-node-1.18.0/x/cardano-node/build/cardano-node/cardano-node ~/.local/bin/
-cp -p dist-newstyle/build/aarch64-linux/ghc-8.6.5/cardano-cli-1.18.0/x/cardano-cli/build/cardano-cli/cardano-cli ~/.local/bin/
+cp -p dist-newstyle/build/aarch64-linux/ghc-8.6.5/cardano-node-1.18.1/x/cardano-node/build/cardano-node/cardano-node ~/.cabal/bin/
+cp -p dist-newstyle/build/aarch64-linux/ghc-8.6.5/cardano-cli-1.18.1/x/cardano-cli/build/cardano-cli/cardano-cli ~/.cabal/bin/
 
 ```
-Finally we have our node. If everything worked fine, you should be able to type <code>cardano-cli</code> and <code>cardano-node</code>.
+El tag que usamos aquí es 1.18.1. Revisa el tag más reciente y utiliza ese.
+Finalmente tenemos nuestro nodo. Si todo funcionó debidamente, deberías de podes teclear <code>cardano-cli</code> y <code>cardano-node</code>.
 
-#### 7. Running a node:
+#### 7. Ejecutando un nodo:
 
 We need first of all some configuration files:
 ```
