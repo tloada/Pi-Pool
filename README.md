@@ -16,7 +16,7 @@ Básicamente tenemos dos tipos diferentes de arquitectura de CPU conocidos. Prim
 
 ## Prerrequisitos
 
-* <b>Raspberry Pi 4 con 8GB RAM (la versión de 4GB solamente con la partición Swap como extra RAM)<b> 
+* <b>Raspberry Pi 4 con 8GB RAM (la versión de 4GB solamente con la partición Swap como extra RAM)</b> 
 * Ubuntu 20.04 LTS <b>64-bit</b> (Fácil de instalar con <a href="https://www.raspberrypi.org/downloads/">Pi Imager</a> (sitio en inglés). Para ejecutar Ubuntu en una SSD, revisa la sección más adelante)
 
 ## Comencemos
