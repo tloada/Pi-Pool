@@ -73,13 +73,13 @@ git clone https://github.com/input-output-hk/cardano-node.git
 cd cardano-node
 echo -e "package cardano-crypto-praos\n  flags: -external-libsodium-vrf" > cabal.project.local
 git fetch --all --tags
-git checkout tags/1.19.0
+git checkout tags/1.19.1
 cabal build all
-cp -p dist-newstyle/build/aarch64-linux/ghc-8.6.5/cardano-node-1.19.0/x/cardano-node/build/cardano-node/cardano-node ~/.cabal/bin/
-cp -p dist-newstyle/build/aarch64-linux/ghc-8.6.5/cardano-cli-1.19.0/x/cardano-cli/build/cardano-cli/cardano-cli ~/.cabal/bin/
+cp -p dist-newstyle/build/aarch64-linux/ghc-8.6.5/cardano-node-1.19.1/x/cardano-node/build/cardano-node/cardano-node ~/.cabal/bin/
+cp -p dist-newstyle/build/aarch64-linux/ghc-8.6.5/cardano-cli-1.19.1/x/cardano-cli/build/cardano-cli/cardano-cli ~/.cabal/bin/
 
 ```
-**El tag que usamos aquí es 1.19.0. Revisa el tag más reciente y utiliza ese.**<br>
+**El tag que usamos aquí es 1.19.1. Revisa el tag más reciente y utiliza ese.**<br>
 Finalmente tenemos nuestro nodo. Si todo funcionó debidamente, deberías de poder teclear <code>cardano-cli</code> y <code>cardano-node</code>.
 
 #### 7. Ejecutando un nodo:
